@@ -37,14 +37,12 @@ notaAsignatura<-function(input){
     BloqueLP= notaBloque(LP,LPG)
     BloqueLPO= notaBloque(LPO,LPOG)
     
-    if( BloqueLP <3 ){
-      x <- "LP is less than 3"
+    
+    #really weird bug, <3 does not work, it takes it as <=3
+    if( BloqueLP <= 2.99999  | BloqueLPO <= 2.99999){
+      x <- "Less than 3 in LP or LPO"
     }
-    
-    if( BloqueLPO <3 )
-      x <- "LPO is less than 3"
-    
-    if(BloqueLP>=3 & BloqueLPO>3){
+    else{
       x<- round((BloqueLP+ BloqueLPO) /2, 2)
     
     }

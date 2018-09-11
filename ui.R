@@ -12,7 +12,7 @@ ui <- pageWithSidebar(
     numericInput(min = 0, max = 10,
       inputId = "LP",
       label = strong("Propositional Logic (LP)"),
-      value = 5.5
+      value = 5
     ),
     
     conditionalPanel(
@@ -20,14 +20,14 @@ ui <- pageWithSidebar(
     numericInput(min = 0, max = 10,
       inputId = "LPG",
       label = strong("LP Group"),
-      value = 5.5
+      value = 5
     )
     ),
     
     numericInput(min = 0, max = 10,
       inputId = "LPO",
       label = strong("First order Logic (LPO)"),
-      value = 5.5
+      value = 5
     ),
     
     conditionalPanel(
@@ -35,7 +35,7 @@ ui <- pageWithSidebar(
     numericInput(min = 0, max = 10,
       inputId = "LPOG",
       label = strong("LPO Group"),
-      value = 5.5
+      value = 5
     )
     ),
     
@@ -55,7 +55,7 @@ ui <- pageWithSidebar(
     numericInput(min = 0, max = 10,
       inputId = "repesca",
       label = strong(" "),
-      value = 5.5
+      value = 5
     )
     )
     ),
