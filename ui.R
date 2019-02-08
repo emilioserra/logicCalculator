@@ -2,54 +2,58 @@
 ui <- pageWithSidebar(
   
   # App title ----
-  headerPanel("Calculator of logic score"),
+  headerPanel("Calculadora de nota"),
   
   # Sidebar panel for inputs ----
   sidebarPanel(
     
-    checkboxInput("continua", "Continuous evaluation ", TRUE),
+    checkboxInput("continua", "Eval. continua", TRUE),
     
-    numericInput(min = 0, max = 10,
-      inputId = "LP",
-      label = strong("Propositional Logic (LP)"),
-      value = 5
-    ),
+    
     
     conditionalPanel(
       condition = "input.continua == true",   
+      numericInput(min = 0, max = 10,
+                   inputId = "LPG",
+                   label = strong("LP grupo"),
+                   value = 5
+      )
+    ),
+    
     numericInput(min = 0, max = 10,
-      inputId = "LPG",
-      label = strong("LP Group"),
+      inputId = "LP",
+      label = strong("LP individual"),
       value = 5
-    )
+    ),
+
+    conditionalPanel(
+      condition = "input.continua == true",      
+      numericInput(min = 0, max = 10,
+                   inputId = "LPOG",
+                   label = strong("LPO grupo"),
+                   value = 5
+      )
     ),
     
     numericInput(min = 0, max = 10,
       inputId = "LPO",
-      label = strong("First order Logic (LPO)"),
+      label = strong("LPO individual"),
       value = 5
     ),
     
-    conditionalPanel(
-      condition = "input.continua == true",      
-    numericInput(min = 0, max = 10,
-      inputId = "LPOG",
-      label = strong("LPO Group"),
-      value = 5
-    )
-    ),
+
     
     # Input: Checkbox for whether outliers should be included ----
     
     conditionalPanel(
       condition = "input.continua == true",   
       
-    checkboxInput("recovery", "Recovery exam (repesca)", FALSE),
+    checkboxInput("recovery", "Repesca", FALSE),
     
     conditionalPanel(
       condition = "input.recovery == true",  
       
-    radioButtons("radio", label = ("Recovered part:"),
+    radioButtons("radio", label = ("Parte recuperada:"),
                  choices = list("LP" = 1, "LPO" = 2)),
     
     numericInput(min = 0, max = 10,
