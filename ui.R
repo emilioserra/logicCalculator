@@ -6,7 +6,8 @@ ui <- pageWithSidebar(
   
   # Sidebar panel for inputs ----
   sidebarPanel(
-    
+    hr(),
+    print("Curso 2019/2020"),
     checkboxInput("continua", "Eval. continua", TRUE),
     
     
@@ -76,5 +77,12 @@ ui <- pageWithSidebar(
   
   
   # Main panel for displaying outputs ----
-  mainPanel(h2(textOutput("selected_var")))
+  mainPanel(
+    h3("Notas"),
+    tags$hr(),
+    h4(textOutput("selected_var1")),
+    h4(textOutput("selected_var2")),
+    h4(textOutput("selected_var3"))
+    
+  )
 )

@@ -1,14 +1,13 @@
 # Define server logic to plot various variables against mpg ----
 notaBloque <- function(NI,NG){
   notaBloque=0
-  if(NI>=5 | ( NI<5 & NG<=NI)){
-    notaBloque=NI*0.7+NG*0.3
-  }
-  else{
-    factor= (NG-NI)/NG
-    notaBloque= NI*(0.7+ 0.3*factor) + NG*(1-(0.7 + 0.3*factor))
+  NI2=round(NI,2)
+  NG2=round(NG,2) #redondeo 
+  
+  factor= 0.3 * ( sqrt (max(0, 5-NI2)/5) )
+  notaBloque=    NG2*(0.3-factor) + NI2*(0.7+ factor)
     
-  }
+  notaBloque=round(notaBloque,2)
   return(notaBloque)
 }
 
@@ -63,8 +62,19 @@ notaAsignatura<-function(input,bloque){
 
 
 server <- function(input, output){
-  output$selected_var <- renderText({
+  
+  #output in several variables 
+  output$selected_var1 <- renderText({
     #x <- -1
-    paste("Bloque LP:", notaAsignatura(input,1), "Bloque LPO:", notaAsignatura(input,2), "Nota final:", notaAsignatura(input,3))
+    paste("Bloque LP: ", notaAsignatura(input,1))
   })
+  output$selected_var2 <- renderText({
+    paste("Bloque LPO: ", notaAsignatura(input,2))
+  })
+  output$selected_var3 <- renderText({
+    paste("Nota asignatura: ", notaAsignatura(input,3))
+  })  
+  
+  
+  
 }
